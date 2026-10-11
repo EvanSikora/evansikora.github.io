@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evan Sikora | Portfolio</title>
+  <meta name="description" content="Evan Sikora – Finance student at Rutgers Business School, open for work.">
+  <style>
+    :root {
+      --navy: #12263f;
+      --red: #cc0033;
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --text: #2b2b2b;
+      --muted: #5f6b7a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--navy);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    nav .logo { color: #fff; font-weight: 700; font-size: 1.1rem; text-decoration: none; }
+    nav ul { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; }
+    nav a { color: #dfe6ee; text-decoration: none; font-weight: 500; }
+    nav ul a:hover { color: #fff; border-bottom: 2px solid var(--red); }
+
+    /* Hero / Personal Statement */
+    header {
+      background: linear-gradient(135deg, var(--navy), #24476e);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px 70px;
+    }
+    header img {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #fff;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    header h1 { font-size: 2.4rem; margin-top: 18px; }
+    header .tagline {
+      max-width: 680px;
+      margin: 14px auto 0;
+      font-size: 1.2rem;
+      color: #e3eaf2;
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 20px;
+      background: var(--red);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* Sections */
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px 20px;
+    }
+    section h2 {
+      font-size: 1.9rem;
+      color: var(--navy);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    section h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--red);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .skill-group {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+    .skill-group h3 { color: var(--navy); margin-bottom: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag {
+      background: #e8eef6;
+      color: var(--navy);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .skill-group.soft .tag { background: #fbe6ec; color: #8a0022; }
+
+    /* Projects */
+    .projects { display: grid; gap: 24px; }
+    .project {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      border-left: 6px solid var(--red);
+    }
+    .project h3 { color: var(--navy); font-size: 1.35rem; }
+    .project .meta { color: var(--muted); font-size: 0.95rem; margin: 4px 0 14px; }
+    .project p { margin-bottom: 16px; }
+    .btn {
+      display: inline-block;
+      background: var(--navy);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--red); }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 50px 20px 30px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.9rem; }
+      header .tagline { font-size: 1.05rem; }
+      nav { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="#about">Evan Sikora</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+    </ul>
+  </nav>
+
+  <!-- Personal Statement -->
+  <header id="about">
+    <img src="headshot.png" alt="Headshot of Evan Sikora">
+    <h1>Evan Sikora</h1>
+    <p class="tagline">Hi, I am Evan Sikora, a current junior studying Finance at Rutgers Business School who is open for work.</p>
+    <span class="badge">Open for Work</span>
+  </header>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Technical Skills</h3>
+        <div class="tags">
+          <span class="tag">Microsoft Excel</span>
+          <span class="tag">Epic Interface</span>
+          <span class="tag">Microsoft Word</span>
+          <span class="tag">Microsoft Teams</span>
+          <span class="tag">Clipchamp</span>
+        </div>
+      </div>
+      <div class="skill-group soft">
+        <h3>Professional Skills</h3>
+        <div class="tags">
+          <span class="tag">Teamwork</span>
+          <span class="tag">Reliability</span>
+          <span class="tag">Consistency</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects &amp; Experience</h2>
+    <div class="projects">
+
+      <article class="project">
+        <h3>Philanthropy Chair &ndash; Chi Psi Fraternity</h3>
+        <p class="meta">Alpha Rho Chapter, Rutgers University &middot; November 2025 &ndash; November 2026</p>
+        <p>Current member of the Alpha Rho Chapter of Chi Psi, serving as philanthropy chair from November 2025 &ndash; November 2026, leading the planning and execution of fundraising initiatives and community service efforts. Coordinate chapter-wide philanthropic events, increase member engagement, and enforce accountability toward fundraising goals. Collaborate with executive board members to manage budgets, allocate resources, and promote a strong culture of leadership, service, and responsibility within the chapter.</p>
+        <p>As Philanthropy Chair, I am keeping the chapter&rsquo;s record-setting charity streak alive.</p>
+        <a class="btn" href="https://myfraternitylife.org/2023/04/03/chi-psi-alpha-rhos-amazing-charity-streak/" target="_blank" rel="noopener noreferrer">Read About the Charity Streak &rarr;</a>
+      </article>
+
+      <article class="project">
+        <h3>Patient Access Registrar &ndash; Atlantic Health</h3>
+        <p class="meta">Atlantic Health System &middot; Healthcare Operations</p>
+        <p>Working as a Patient Access Representative, supporting front-end hospital operations through patient intake, registration, navigating Epic, and appointment coordination. Ensuring accuracy in patient information, insurance verification, and documentation while maintaining compliance with healthcare regulations and patient privacy standards. Communicating effectively with patients and collaborating with clinical and administrative teams to resolve issues efficiently and support smooth patient flow in a fast-paced healthcare environment.</p>
+        <a class="btn" href="https://www.atlantichealth.org/home" target="_blank" rel="noopener noreferrer">Visit Atlantic Health &rarr;</a>
+      </article>
+
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Evan Sikora &middot; Rutgers Business School
+  </footer>
+
+</body>
+</html>
