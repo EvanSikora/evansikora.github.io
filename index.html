@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>document.documentElement.classList.add("js");</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Evan Sikora | Portfolio</title>
   <meta name="description" content="Evan Sikora – Finance student at Rutgers Business School, open for work.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #12263f;
-      --red: #cc0033;
-      --bg: #f5f7fa;
-      --card: #ffffff;
-      --text: #2b2b2b;
-      --muted: #5f6b7a;
+      --scarlet: #cc0033;
+      --scarlet-dark: #9e0028;
+      --scarlet-light: #fdecf0;
+      --white: #ffffff;
+      --off-white: #fbf7f8;
+      --text: #1f1f1f;
+      --muted: #6b6b6b;
+      --shadow: 0 10px 30px rgba(204, 0, 51, 0.10);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -20,144 +26,297 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
+      font-family: "Poppins", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--white);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    /* Navigation */
+    /* ---------- Navigation ---------- */
     nav {
       position: sticky;
       top: 0;
       z-index: 10;
-      background: var(--navy);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 3px solid var(--scarlet);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 24px;
+      padding: 14px 28px;
       flex-wrap: wrap;
       gap: 8px;
     }
-    nav .logo { color: #fff; font-weight: 700; font-size: 1.1rem; text-decoration: none; }
-    nav ul { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; }
-    nav a { color: #dfe6ee; text-decoration: none; font-weight: 500; }
-    nav ul a:hover { color: #fff; border-bottom: 2px solid var(--red); }
-
-    /* Hero / Personal Statement */
-    header {
-      background: linear-gradient(135deg, var(--navy), #24476e);
-      color: #fff;
-      text-align: center;
-      padding: 60px 20px 70px;
+    nav .logo {
+      color: var(--scarlet);
+      font-weight: 800;
+      font-size: 1.25rem;
+      text-decoration: none;
+      letter-spacing: 0.5px;
     }
-    header img {
-      width: 190px;
-      height: 190px;
+    nav ul { list-style: none; display: flex; gap: 8px; flex-wrap: wrap; }
+    nav ul a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav ul a:hover { background: var(--scarlet); color: var(--white); }
+
+    /* ---------- Hero / Personal Statement ---------- */
+    header {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--scarlet) 0%, var(--scarlet-dark) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 70px 20px 110px;
+    }
+    /* decorative circles */
+    header::before, header::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+    }
+    header::before { width: 420px; height: 420px; top: -160px; left: -120px; }
+    header::after  { width: 320px; height: 320px; bottom: -140px; right: -80px; }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .headshot {
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       object-fit: cover;
-      border: 5px solid #fff;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      border: 6px solid var(--white);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.30);
     }
-    header h1 { font-size: 2.4rem; margin-top: 18px; }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-top: 20px;
+      letter-spacing: 0.5px;
+    }
+    header .subtitle {
+      font-weight: 500;
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-top: 2px;
+    }
     header .tagline {
-      max-width: 680px;
-      margin: 14px auto 0;
+      max-width: 700px;
+      margin: 22px auto 0;
       font-size: 1.2rem;
-      color: #e3eaf2;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 14px;
+      padding: 18px 24px;
     }
     .badge {
-      display: inline-block;
-      margin-top: 20px;
-      background: var(--red);
-      color: #fff;
-      padding: 8px 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      background: var(--white);
+      color: var(--scarlet);
+      padding: 10px 22px;
       border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.95rem;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+    .badge .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #1db954;
+      box-shadow: 0 0 0 4px rgba(29, 185, 84, 0.25);
     }
 
-    /* Sections */
+    /* Rutgers school card under the hero */
+    .school-card {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      margin: -55px auto 0;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid #f3d6dd;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 26px;
+    }
+    .school-card .logo-wrap { flex-shrink: 0; }
+    .school-card img { height: 64px; width: auto; display: block; }
+    .school-card h3 { color: var(--scarlet); font-size: 1.15rem; }
+    .school-card p { color: var(--muted); font-size: 0.95rem; }
+
+    /* ---------- Sections ---------- */
     section {
-      max-width: 1000px;
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 60px 20px 20px;
+      padding: 70px 20px 10px;
+    }
+    .section-label {
+      display: block;
+      text-align: center;
+      color: var(--scarlet);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.85rem;
     }
     section h2 {
-      font-size: 1.9rem;
-      color: var(--navy);
-      margin-bottom: 24px;
+      font-size: 2.1rem;
+      font-weight: 800;
       text-align: center;
+      margin-bottom: 34px;
     }
     section h2::after {
       content: "";
       display: block;
-      width: 60px;
-      height: 4px;
-      background: var(--red);
-      margin: 10px auto 0;
-      border-radius: 2px;
+      width: 70px;
+      height: 5px;
+      background: var(--scarlet);
+      margin: 12px auto 0;
+      border-radius: 3px;
     }
 
-    /* Skills */
+    /* ---------- Skills ---------- */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
     }
     .skill-group {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      background: var(--white);
+      border: 1px solid #f3d6dd;
+      border-top: 6px solid var(--scarlet);
+      border-radius: 16px;
+      padding: 26px;
+      box-shadow: var(--shadow);
     }
-    .skill-group h3 { color: var(--navy); margin-bottom: 14px; }
+    .skill-group h3 {
+      font-size: 1.2rem;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .skill-group h3 .icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: var(--scarlet);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
     .tags { display: flex; flex-wrap: wrap; gap: 10px; }
     .tag {
-      background: #e8eef6;
-      color: var(--navy);
-      padding: 8px 14px;
-      border-radius: 8px;
+      background: var(--scarlet-light);
+      color: var(--scarlet-dark);
+      border: 1px solid #f6c3cf;
+      padding: 8px 16px;
+      border-radius: 999px;
       font-weight: 600;
       font-size: 0.95rem;
+      transition: transform 0.2s, background 0.2s, color 0.2s;
     }
-    .skill-group.soft .tag { background: #fbe6ec; color: #8a0022; }
+    .tag:hover {
+      background: var(--scarlet);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
 
-    /* Projects */
-    .projects { display: grid; gap: 24px; }
+    /* ---------- Projects ---------- */
+    .projects { display: grid; gap: 28px; }
     .project {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 28px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-      border-left: 6px solid var(--red);
+      background: var(--white);
+      border: 1px solid #f3d6dd;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .project h3 { color: var(--navy); font-size: 1.35rem; }
-    .project .meta { color: var(--muted); font-size: 0.95rem; margin: 4px 0 14px; }
-    .project p { margin-bottom: 16px; }
+    .project:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(204, 0, 51, 0.16);
+    }
+    .project-head {
+      background: linear-gradient(135deg, var(--scarlet), var(--scarlet-dark));
+      color: var(--white);
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .project-head .logo-wrap {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 8px 12px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+    .project-head img { height: 46px; width: auto; max-width: 150px; display: block; }
+    .project-head h3 { font-size: 1.35rem; line-height: 1.3; }
+    .project-head .meta { font-size: 0.92rem; opacity: 0.9; }
+    .project-body { padding: 26px 28px 28px; }
+    .project-body p { margin-bottom: 16px; }
+    .highlight {
+      background: var(--scarlet-light);
+      border-left: 4px solid var(--scarlet);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+    }
     .btn {
       display: inline-block;
-      background: var(--navy);
-      color: #fff;
+      background: var(--scarlet);
+      color: var(--white);
       text-decoration: none;
-      padding: 10px 18px;
-      border-radius: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
       font-weight: 600;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s;
     }
-    .btn:hover { background: var(--red); }
+    .btn:hover { background: var(--scarlet-dark); transform: translateY(-2px); }
 
+    /* ---------- Footer ---------- */
     footer {
+      margin-top: 70px;
+      background: var(--scarlet);
+      color: var(--white);
       text-align: center;
-      color: var(--muted);
-      padding: 50px 20px 30px;
-      font-size: 0.9rem;
+      padding: 34px 20px;
+    }
+    footer .name { font-weight: 700; font-size: 1.1rem; }
+    footer p { opacity: 0.9; font-size: 0.9rem; }
+
+    /* ---------- Fade-in on scroll ---------- */
+    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s; }
+    .js .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .js .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
     }
 
+    /* ---------- Mobile ---------- */
     @media (max-width: 600px) {
-      header h1 { font-size: 1.9rem; }
-      header .tagline { font-size: 1.05rem; }
-      nav { justify-content: center; }
+      nav { justify-content: center; padding: 12px 16px; }
+      header { padding: 50px 16px 100px; }
+      header h1 { font-size: 2.1rem; }
+      header .tagline { font-size: 1.05rem; padding: 14px 16px; }
+      .headshot { width: 160px; height: 160px; }
+      .school-card { margin: -55px 16px 0; flex-direction: column; text-align: center; }
+      section { padding: 56px 16px 10px; }
+      .project-head { flex-direction: column; align-items: flex-start; padding: 20px; }
+      .project-body { padding: 20px; }
     }
   </style>
 </head>
@@ -174,18 +333,30 @@
 
   <!-- Personal Statement -->
   <header id="about">
-    <img src="headshot.png" alt="Headshot of Evan Sikora">
-    <h1>Evan Sikora</h1>
-    <p class="tagline">Hi, I am Evan Sikora, a current junior studying Finance at Rutgers Business School who is open for work.</p>
-    <span class="badge">Open for Work</span>
+    <div class="hero-content">
+      <img class="headshot" src="headshot.png" alt="Headshot of Evan Sikora">
+      <h1>Evan Sikora</h1>
+      <p class="subtitle">Finance Student &middot; Rutgers Business School</p>
+      <p class="tagline">Hi, I am Evan Sikora, a current junior studying Finance at Rutgers Business School who is open for work.</p>
+      <span class="badge"><span class="dot"></span>Open for Work</span>
+    </div>
   </header>
+
+  <div class="school-card reveal">
+    <div class="logo-wrap"><img class="logo-img" data-name="rutgers-logo" alt="Rutgers University logo"></div>
+    <div>
+      <h3>Rutgers Business School</h3>
+      <p>Finance Major &middot; Junior</p>
+    </div>
+  </div>
 
   <!-- Skills -->
   <section id="skills">
+    <span class="section-label">What I Bring</span>
     <h2>Skills</h2>
     <div class="skills-grid">
-      <div class="skill-group">
-        <h3>Technical Skills</h3>
+      <div class="skill-group reveal">
+        <h3><span class="icon">&#128187;</span>Technical Skills</h3>
         <div class="tags">
           <span class="tag">Microsoft Excel</span>
           <span class="tag">Epic Interface</span>
@@ -194,8 +365,8 @@
           <span class="tag">Clipchamp</span>
         </div>
       </div>
-      <div class="skill-group soft">
-        <h3>Professional Skills</h3>
+      <div class="skill-group reveal">
+        <h3><span class="icon">&#129309;</span>Professional Skills</h3>
         <div class="tags">
           <span class="tag">Teamwork</span>
           <span class="tag">Reliability</span>
@@ -207,30 +378,80 @@
 
   <!-- Projects -->
   <section id="projects">
+    <span class="section-label">What I've Done</span>
     <h2>Projects &amp; Experience</h2>
     <div class="projects">
 
-      <article class="project">
-        <h3>Philanthropy Chair &ndash; Chi Psi Fraternity</h3>
-        <p class="meta">Alpha Rho Chapter, Rutgers University &middot; November 2025 &ndash; November 2026</p>
-        <p>Current member of the Alpha Rho Chapter of Chi Psi, serving as philanthropy chair from November 2025 &ndash; November 2026, leading the planning and execution of fundraising initiatives and community service efforts. Coordinate chapter-wide philanthropic events, increase member engagement, and enforce accountability toward fundraising goals. Collaborate with executive board members to manage budgets, allocate resources, and promote a strong culture of leadership, service, and responsibility within the chapter.</p>
-        <p>As Philanthropy Chair, I am keeping the chapter&rsquo;s record-setting charity streak alive.</p>
-        <a class="btn" href="https://myfraternitylife.org/2023/04/03/chi-psi-alpha-rhos-amazing-charity-streak/" target="_blank" rel="noopener noreferrer">Read About the Charity Streak &rarr;</a>
+      <article class="project reveal">
+        <div class="project-head">
+          <div class="logo-wrap"><img class="logo-img" data-name="rutgers-logo" alt="Rutgers University logo"></div>
+          <div>
+            <h3>Philanthropy Chair &ndash; Chi Psi Fraternity</h3>
+            <p class="meta">Alpha Rho Chapter, Rutgers University &middot; Nov 2025 &ndash; Nov 2026</p>
+          </div>
+        </div>
+        <div class="project-body">
+          <p>Current member of the Alpha Rho Chapter of Chi Psi, serving as philanthropy chair from November 2025 &ndash; November 2026, leading the planning and execution of fundraising initiatives and community service efforts. Coordinate chapter-wide philanthropic events, increase member engagement, and enforce accountability toward fundraising goals. Collaborate with executive board members to manage budgets, allocate resources, and promote a strong culture of leadership, service, and responsibility within the chapter.</p>
+          <p class="highlight">As Philanthropy Chair, I am keeping the chapter&rsquo;s record-setting charity streak alive.</p>
+          <a class="btn" href="https://myfraternitylife.org/2023/04/03/chi-psi-alpha-rhos-amazing-charity-streak/" target="_blank" rel="noopener noreferrer">Read About the Charity Streak &rarr;</a>
+        </div>
       </article>
 
-      <article class="project">
-        <h3>Patient Access Registrar &ndash; Atlantic Health</h3>
-        <p class="meta">Atlantic Health System &middot; Healthcare Operations</p>
-        <p>Working as a Patient Access Representative, supporting front-end hospital operations through patient intake, registration, navigating Epic, and appointment coordination. Ensuring accuracy in patient information, insurance verification, and documentation while maintaining compliance with healthcare regulations and patient privacy standards. Communicating effectively with patients and collaborating with clinical and administrative teams to resolve issues efficiently and support smooth patient flow in a fast-paced healthcare environment.</p>
-        <a class="btn" href="https://www.atlantichealth.org/home" target="_blank" rel="noopener noreferrer">Visit Atlantic Health &rarr;</a>
+      <article class="project reveal">
+        <div class="project-head">
+          <div class="logo-wrap"><img class="logo-img" data-name="atlantic-health-logo" alt="Atlantic Health System logo"></div>
+          <div>
+            <h3>Patient Access Registrar &ndash; Atlantic Health</h3>
+            <p class="meta">Atlantic Health System &middot; Healthcare Operations</p>
+          </div>
+        </div>
+        <div class="project-body">
+          <p>Working as a Patient Access Representative, supporting front-end hospital operations through patient intake, registration, navigating Epic, and appointment coordination. Ensuring accuracy in patient information, insurance verification, and documentation while maintaining compliance with healthcare regulations and patient privacy standards. Communicating effectively with patients and collaborating with clinical and administrative teams to resolve issues efficiently and support smooth patient flow in a fast-paced healthcare environment.</p>
+          <a class="btn" href="https://www.atlantichealth.org/home" target="_blank" rel="noopener noreferrer">Visit Atlantic Health &rarr;</a>
+        </div>
       </article>
 
     </div>
   </section>
 
   <footer>
-    &copy; 2026 Evan Sikora &middot; Rutgers Business School
+    <p class="name">Evan Sikora</p>
+    <p>Finance &middot; Rutgers Business School &middot; &copy; 2026</p>
   </footer>
+
+  <script>
+    // Load each logo from whichever file type was uploaded (png, jpg, jpeg, svg, webp).
+    // If no logo file exists, hide its spot so nothing appears broken.
+    document.querySelectorAll(".logo-img").forEach(function (img) {
+      var exts = ["png", "jpg", "jpeg", "svg", "webp"];
+      var i = 0;
+      img.onerror = function () {
+        i++;
+        if (i < exts.length) {
+          img.src = img.dataset.name + "." + exts[i];
+        } else {
+          img.closest(".logo-wrap").remove();
+        }
+      };
+      img.src = img.dataset.name + "." + exts[0];
+    });
+
+    // Fade sections in as they scroll into view.
+    var revealEls = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(function (el) { observer.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add("visible"); });
+    }
+  </script>
 
 </body>
 </html>
